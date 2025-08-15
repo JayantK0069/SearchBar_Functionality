@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suggestion</title>
+  </head>
+  <body>
+    <div class="GUI">
+      <button id="btn">🔍</button>
+      <input type="text" id="serox" placeholder="Type Here ..." />
+    </div>
+    <table class="tabHolder"></table>
+  </body>
+  <style>
+    .GUI {
+      display: flex;
+      justify-content: center;
+    }
+    #btn {
+      width: 50px;
+      height: 50px;
+      font-size: 25px;
+      background-color: gray;
+      border: none;
+      border-radius: 10px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+    #serox {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      font-size: large;
+    }
+    #btn:hover {
+      transition: transform 0.1s ease;
+      transform: scale(1.05);
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+  </style>
+  <script>
+    const words = ["the","of","and","a","to","in","is","you","that","it","he","was","for","on","are","as","with","his","they","I","at","be","this","have","from","or","one","had","by","word","but","not","what","all","were","we","when","your","can","said","there","use","an","each","which","she","do","how","their","if","will","up","other","about","out","many","then","them","these","so","some","her","would","make","like","him","into","time","has","look","two","more","write","go","see","number","no","way","could","people","my","than","first","water","been","call","who","oil","its","now","find","long","down","day","did","get","come","made","may","part","apple","banana","orange","grape","kiwi","melon","peach","pear","plum","dog","cat","bird","fish","horse","cow","pig","sheep","chicken","house","car","tree","sun","moon","star","sky","cloud","rain","book","pen","paper","computer","phone","table","chair","door","window","music","art","dance","sport","game","food","drink","travel","movie","happy","sad","angry","excited","calm","brave","silly","kind","smart","red","blue","green","yellow","black","white","purple","pink","brown","one","two","three","four","five","six","seven","eight","nine","ten","january","february","march","april","may","june","july","august","september","october","november","december","monday","tuesday","wednesday","thursday","friday","saturday","sunday","america","canada","mexico","england","france","germany","italy","spain","china","japan","korea","india","brazil","australia","africa","mountain","river","ocean","forest","desert","island","lake","valley","cave","waterfall","science","math","history","english","art","music","sports","technology","business","health","programming","javascript","html","css","database","server","network","security","algorithm","design","love","hate","joy","fear","hope","dream","belief","truth","peace","freedom","world","universe","galaxy","planet","earth","space","time","energy","matter","life","king","queen","prince","princess","castle","sword","shield","dragon","wizard","knight","summer","winter","spring","autumn","season","weather","temperature","climate","nature","environment","example","sample","test","code","function","variable","object","array","string","number","create","read","update","delete","search","sort","filter","validate","process","analyze","system","application","program","software","hardware","device","machine","tool","equipment","instrument","success","failure","problem","solution","challenge","opportunity","progress"];
+    let tabHolderVal = document.getElementsByClassName("tabHolder")[0];
+    const inputField = document.getElementById("serox");
+    inputField.addEventListener("keyup", () => {
+      let val = inputField.value;
+      let count = 0;
+      tabHolderVal.innerHTML = "";
+      for (let i = 0; i < words.length && count < 5; i++) {
+        let tempVar = "";
+        for (let j = 0; j < val.length && val.length < words[i].length; j++) {
+          tempVar += words[i][j];
+        }
+        if (val === tempVar) {
+          tabHolderVal.innerHTML += `<tr><td style="vertical-align:middle;">${words[i]}</td></tr>`;
+          tabHolderVal.style.background = "#D3D3D3";
+          tabHolderVal.style.borderRadius = "10px";
+          tabHolderVal.style.width = "277px"
+          count++;
+        }
+      }
+      if(val === ""){
+        tabHolderVal.innerHTML = "";
+      }
+    });
+    inputField.addEventListener("keydown",()=>{
+      tabHolderVal.innerHTML = "";
+    });
+  </script>
+</html>
