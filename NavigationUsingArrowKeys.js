@@ -30,8 +30,9 @@ document.addEventListener("keyup", (event) => {
     });
   }
   if (event.key === "Enter") {
-    if (rows[count2].className === "main" && rows[count2]) {
+    if (rows[count2] && rows[count2].className === "main") {
       inputField.value = rows[count2].innerText;
     }
   }
+
 });
